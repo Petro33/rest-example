@@ -11,15 +11,14 @@ document.addEventListener('DOMContentLoaded', function(){ // Аналог $(docu
             var deviceList;
 
             data.forEach(device => {
-
                 var date = new Date(device.last_reported_date_time);
-                console.log(date);
+                var localDate = new Date(device.last_reported_date_time);
 
                 deviceList +=
                     '<tr>\n' +
                     '   <td>'+ device.device_id +'</td>\n' +
                     '   <td>'+ device.device_label +'</td>\n' +
-                    '   <td>'+ date.getFullYear() + '-'+ date.getMonth() + '-'+ date.getDay() +' '+ date.getHours() + ':'+ date.getMinutes() + ':'+ date.getSeconds() + '</td>\n' +
+                    '   <td>'+ date.toLocaleDateString()+ ' ' +date.toLocaleTimeString() +'</td>\n' +
                     '   <td>'+ device.last_reported_date_time +'</td>\n' +
                     '   <td class="text-'+ device.status.toLowerCase() +'">'+ device.status +'</td>\n' +
                     '</tr>';
